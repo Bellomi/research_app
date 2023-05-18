@@ -29,10 +29,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
+      padding: const EdgeInsets.only(bottom: 8, top: 8),
       child: TextFormField(
         obscureText: isObscure,
         decoration: InputDecoration(
+          enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(width: 3, color: Colors.blueAccent),
+            borderRadius: BorderRadius.circular(20),
+          ),
           prefixIcon: Icon(widget.icon),
           //suffix icon visibility will only appear when the field is obscure
           suffixIcon: widget.isSecret
@@ -48,10 +52,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
               : null,
           labelText: widget.label,
           isDense: true,
-          border: OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.yellow, width: 20),
-            borderRadius: BorderRadius.circular(20),
-          ),
         ),
       ),
     );
