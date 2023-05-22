@@ -1,5 +1,6 @@
 import 'package:ceratocone_app1/src/config/custom_colors.dart';
 import 'package:ceratocone_app1/src/home/home_tab.dart';
+import 'package:ceratocone_app1/src/home/test_tab.dart';
 import 'package:flutter/material.dart';
 
 class BaseScreen extends StatefulWidget {
@@ -21,7 +22,7 @@ class _BaseScreenState extends State<BaseScreen> {
         controller: pageController,
         children: [
           const HomeTab(),
-          Container(color: Colors.red),
+          const TestTab(),
           Container(color: Colors.blueAccent),
           Container(color: Colors.cyanAccent),
         ],
