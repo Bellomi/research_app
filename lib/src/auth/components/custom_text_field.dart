@@ -4,12 +4,14 @@ class CustomTextField extends StatefulWidget {
   final IconData icon;
   final String label;
   final bool isSecret;
+  final TextEditingController controller;
 
   const CustomTextField({
     Key? key,
     required this.icon,
     required this.label,
     this.isSecret = false,
+    required this.controller,
   }) : super(key: key);
 
   @override

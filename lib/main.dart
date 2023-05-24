@@ -1,7 +1,14 @@
+import 'package:ceratocone_app1/firebase_options.dart';
 import 'package:ceratocone_app1/src/auth/sign_in_screen.dart';
+import 'package:ceratocone_app1/src/repository/authentication_repository/autenthication_repository.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
+      .then((value) => Get.put(AuthenticationRepository()));
   runApp(const MyApp());
 }
 

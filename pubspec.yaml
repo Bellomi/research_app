@@ -36,6 +36,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_survey: ^0.1.4
   group_radio_button: ^1.3.0
+  firebase_auth: ^4.6.1
+  firebase_core: ^2.13.0
+  get: ^4.6.1
+  get_storage: ^2.0.3
 
 dev_dependencies:
   flutter_test:
@@ -70,7 +74,6 @@ flutter:
     - assets/images/lens.png
     - assets/images/lenseyes.png
     - assets/images/ring.png
-
 
   # To add assets to your application, add an assets section, like this:
   # assets:

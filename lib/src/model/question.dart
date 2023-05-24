@@ -1,8 +1,13 @@
 class Question {
   int questionId;
   String question;
+  List<Option> options;
 
-  Question({required this.questionId, required this.question});
+  Question({
+    required this.questionId,
+    required this.question,
+    required this.options,
+  });
 
 //   static List<Question> questions = [
 //     Question(
@@ -54,3 +59,57 @@ class Question {
 //   ];
 // }
 }
+
+class Option {
+  final int optionId;
+  final String text;
+  late final bool isSelected;
+
+  Option(
+      {required this.optionId, required this.text, required this.isSelected});
+}
+
+final questions = [
+  Question(
+      questionId: 1,
+      question:
+          'Quanto sua visão interfere com o uso de uma tela de computador?',
+      options: [
+        Option(optionId: 0, text: 'Não aplicável', isSelected: false),
+        Option(optionId: 1, text: 'De modo algum', isSelected: false),
+        Option(optionId: 2, text: 'Pouco', isSelected: false),
+        Option(optionId: 3, text: 'Bastante', isSelected: false),
+        Option(optionId: 4, text: 'Muito', isSelected: false),
+      ]),
+  Question(
+      questionId: 2,
+      question: 'Quanto sua visão interfere para dirigir durante o dia?',
+      options: [
+        Option(optionId: 0, text: 'Não aplicável', isSelected: false),
+        Option(optionId: 1, text: 'De modo algum', isSelected: false),
+        Option(optionId: 2, text: 'Pouco', isSelected: false),
+        Option(optionId: 3, text: 'Bastante', isSelected: false),
+        Option(optionId: 4, text: 'Muito', isSelected: false),
+      ]),
+  Question(
+      questionId: 3,
+      question: 'Quanto sua visão interfere para dirigir durante a noite?',
+      options: [
+        Option(optionId: 0, text: 'Não aplicável', isSelected: false),
+        Option(optionId: 1, text: 'De modo algum', isSelected: false),
+        Option(optionId: 2, text: 'Pouco', isSelected: false),
+        Option(optionId: 3, text: 'Bastante', isSelected: false),
+        Option(optionId: 4, text: 'Muito', isSelected: false),
+      ]),
+  Question(
+      questionId: 4,
+      question:
+          'Quanto sua visão interfere com a leitura de sinais de trânsito?',
+      options: [
+        Option(optionId: 0, text: 'Não aplicável', isSelected: false),
+        Option(optionId: 1, text: 'De modo algum', isSelected: false),
+        Option(optionId: 2, text: 'Pouco', isSelected: false),
+        Option(optionId: 3, text: 'Bastante', isSelected: false),
+        Option(optionId: 4, text: 'Muito', isSelected: false),
+      ]),
+];

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "50495206313",
+    "project_id": "cerotocone-131e3",
+    "storage_bucket": "cerotocone-131e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:50495206313:android:24be549deffca6674a8ab8",
+        "android_client_info": {
+          "package_name": "com.example.ceratocone_app1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "50495206313-i957k2avoj3574i0ghvf20siipanj3v4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfPLuQN2tYbjghyWLG-vGV0Sh160qBgLo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "50495206313-i957k2avoj3574i0ghvf20siipanj3v4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>50495206313-0pq24v19evq1ufihj20nfakbfbg6rcc7.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.50495206313-0pq24v19evq1ufihj20nfakbfbg6rcc7</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAD0srggtK_u6EU5gfXvKpdmzhp8Px9Yqo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>50495206313</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.ceratoconeApp1</string>
+	<key>PROJECT_ID</key>
+	<string>cerotocone-131e3</string>
+	<key>STORAGE_BUCKET</key>
+	<string>cerotocone-131e3.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:50495206313:ios:3518885a5329eca84a8ab8</string>
+</dict>
+</plist>
