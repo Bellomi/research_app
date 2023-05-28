@@ -5,22 +5,23 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class SignInScreen extends StatefulWidget {
+class RegisterScreen extends StatefulWidget {
   final Function()? onTap;
 
-  const SignInScreen({super.key, required this.onTap});
+  const RegisterScreen({super.key, required this.onTap});
 
   @override
-  State<SignInScreen> createState() => _SignInScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   //test editing controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
   //sign user in method
-  void signUserIn() async {
+  void signUserUp() async {
     //show loading circle
     showDialog(
       context: context,
@@ -31,12 +32,19 @@ class _SignInScreenState extends State<SignInScreen> {
       },
     );
 
-    //try sign in
+    //try creating a new user
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
-      );
+      //check if the password is the same as the confirmation
+      if(passwordController.text == confirmPasswordController.text) {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text,
+          password: passwordController.text,
+        );
+      } else {
+        //show error message, passwords dont match
+        wrongPasswordMessage();
+      }
+
       //pop loading circle
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
@@ -47,7 +55,6 @@ class _SignInScreenState extends State<SignInScreen> {
         //show error to user
         wrongEmailMessage();
       }
-
       //WRONG PASSWORD
       else if (e.code == 'wrong-password') {
         wrongPasswordMessage();
@@ -80,7 +87,7 @@ class _SignInScreenState extends State<SignInScreen> {
           backgroundColor: Colors.green,
           title: Center(
             child: Text(
-              'Senha incorreta. Tente novamente ou acesse "esqueceu sua senha"',
+              'Senha incorreta. Tente novamente"',
               style: TextStyle(color: Colors.white),
             ),
           ),
@@ -122,26 +129,19 @@ class _SignInScreenState extends State<SignInScreen> {
               hintText: 'Senha',
               obscureText: true,
             ),
+
+            const SizedBox(height: 20),
+
+            CustomTextField(
+              controller: confirmPasswordController,
+              hintText: 'Confirme a senha',
+              obscureText: true,
+            ),
             const SizedBox(height: 10),
 
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    'Esqueceu a senha?',
-                    style: TextStyle(
-                        color: Colors.blueAccent, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 5),
-
             ButtonNext(
-              text: 'ENTRAR',
-              onTap: signUserIn,
+              text: 'CADASTRAR',
+              onTap: signUserUp,
             ),
 
             const SizedBox(height: 5),
@@ -204,14 +204,14 @@ class _SignInScreenState extends State<SignInScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  'Para se cadastrar:',
+                  'Já tem um cadastro?',
                   style: TextStyle(fontSize: 18),
                 ),
-                const SizedBox(width: 4),
+                SizedBox(width: 4),
                 GestureDetector(
                   onTap: widget.onTap,
                   child: const Text(
-                    'Clique aqui',
+                    'Entre aqui.',
                     style: TextStyle(
                         color: Colors.blue,
                         fontSize: 18,

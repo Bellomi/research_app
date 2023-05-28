@@ -3,6 +3,8 @@ import 'package:ceratocone_app1/src/home/home_tab.dart';
 import 'package:ceratocone_app1/src/home/test_tab.dart';
 import 'package:flutter/material.dart';
 
+import '../home/profile_tab.dart';
+
 class BaseScreen extends StatefulWidget {
   const BaseScreen({super.key});
 
@@ -24,7 +26,7 @@ class _BaseScreenState extends State<BaseScreen> {
           const HomeTab(),
           const TestTab(),
           Container(color: Colors.blueAccent),
-          Container(color: Colors.cyanAccent),
+          const ProfileTab(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

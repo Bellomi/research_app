@@ -1,14 +1,16 @@
-import 'package:ceratocone_app1/firebase_options.dart';
+import 'package:ceratocone_app1/src/auth/auth_page.dart';
 import 'package:ceratocone_app1/src/auth/sign_in_screen.dart';
-import 'package:ceratocone_app1/src/repository/authentication_repository/autenthication_repository.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
-      .then((value) => Get.put(AuthenticationRepository()));
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+
   runApp(const MyApp());
 }
 
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const SignInScreen(),
+      home: const AuthorizationScreen(),
     );
   }
 }

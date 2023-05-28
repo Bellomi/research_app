@@ -74,6 +74,7 @@ flutter:
     - assets/images/lens.png
     - assets/images/lenseyes.png
     - assets/images/ring.png
+    - assets/images/ic_google.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

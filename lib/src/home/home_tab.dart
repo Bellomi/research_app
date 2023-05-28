@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class HomeTab extends StatelessWidget {
   const HomeTab({super.key});
@@ -8,6 +9,11 @@ class HomeTab extends StatelessWidget {
     return Scaffold(
       //AppBar
       appBar: AppBar(
+        systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarColor: Colors.white,
+          statusBarIconBrightness: Brightness.dark,
+          statusBarBrightness: Brightness.dark,
+        ),
         backgroundColor: Colors.transparent,
         toolbarHeight: 80,
         centerTitle: true,

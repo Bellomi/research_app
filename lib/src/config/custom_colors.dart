@@ -11,4 +11,7 @@ abstract class CustomColors {
   static Color lightBlue = const Color.fromARGB(85, 48, 135, 217);
   static Color darkBrown = const Color.fromARGB(25, 64, 40, 0);
   static Color mediumBrown = const Color.fromARGB(55, 140, 93, 55);
+
+  static Color darkestBlue = const Color.fromARGB(255, 9, 9, 210);
+
 }

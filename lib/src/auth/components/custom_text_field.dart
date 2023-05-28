@@ -1,59 +1,36 @@
 import 'package:flutter/material.dart';
 
-class CustomTextField extends StatefulWidget {
-  final IconData icon;
-  final String label;
-  final bool isSecret;
-  final TextEditingController controller;
+class CustomTextField extends StatelessWidget {
+  final controller;
+  final String hintText;
+  final bool obscureText;
 
-  const CustomTextField({
-    Key? key,
-    required this.icon,
-    required this.label,
-    this.isSecret = false,
-    required this.controller,
-  }) : super(key: key);
-
-  @override
-  State<CustomTextField> createState() => _CustomTextFieldState();
-}
-
-class _CustomTextFieldState extends State<CustomTextField> {
-  bool isObscure = false;
-
-  @override
-  void initState() {
-    super.initState();
-
-    isObscure = widget.isSecret;
-  }
+  const CustomTextField(
+      {Key? key,
+      required this.controller,
+      required this.hintText,
+      required this.obscureText})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8, top: 8),
-      child: TextFormField(
-        obscureText: isObscure,
+    return  Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 30,
+      ),
+      child: TextField(
+        controller: controller,
+        obscureText: obscureText,
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 3, color: Colors.blueAccent),
-            borderRadius: BorderRadius.circular(20),
+            borderSide: const BorderSide(color: Colors.black38),
+            borderRadius: BorderRadius.circular(15),
           ),
-          prefixIcon: Icon(widget.icon),
-          //suffix icon visibility will only appear when the field is obscure
-          suffixIcon: widget.isSecret
-              ? IconButton(
-                  onPressed: () {
-                    setState(() {
-                      isObscure = !isObscure;
-                    });
-                  },
-                  icon:
-                      Icon(isObscure ? Icons.visibility : Icons.visibility_off),
-                )
-              : null,
-          labelText: widget.label,
-          isDense: true,
+          focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.lightBlue),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          hintText: hintText,
         ),
       ),
     );
