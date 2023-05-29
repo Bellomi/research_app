@@ -1,8 +1,8 @@
-import 'package:ceratocone_app1/src/auth/sign_in_or_register_screen.dart';
+import 'package:ceratocone_app1/src/auth/pages/sign_in_or_register_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../base/base_screen.dart';
+import '../../base/base_screen.dart';
 
 //check if the user is sign in or not
 class AuthorizationScreen extends StatelessWidget {

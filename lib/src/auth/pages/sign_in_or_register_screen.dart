@@ -1,5 +1,5 @@
-import 'package:ceratocone_app1/src/auth/register_screen.dart';
-import 'package:ceratocone_app1/src/auth/sign_in_screen.dart';
+import 'package:ceratocone_app1/src/auth/pages/register_screen.dart';
+import 'package:ceratocone_app1/src/auth/pages/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 
 class SignInOrRegisterScreen extends StatefulWidget {

@@ -17,7 +17,8 @@ class ButtonNext extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(25),
         child: Container(
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.symmetric(
+                vertical: 12),
             decoration: BoxDecoration(
                 color: CustomColors.darkestBlue,
                 borderRadius: BorderRadius.circular(8)),

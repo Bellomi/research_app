@@ -1,5 +1,4 @@
-import 'package:ceratocone_app1/src/auth/auth_page.dart';
-import 'package:ceratocone_app1/src/auth/sign_in_screen.dart';
+import 'package:ceratocone_app1/src/auth/pages/auth_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';

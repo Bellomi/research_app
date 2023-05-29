@@ -1,27 +1,29 @@
 import 'package:ceratocone_app1/src/auth/components/Button.dart';
 import 'package:ceratocone_app1/src/auth/components/custom_text_field.dart';
+import 'package:ceratocone_app1/src/auth/services/auth_service.dart';
 import 'package:ceratocone_app1/src/config/custom_colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class RegisterScreen extends StatefulWidget {
+import 'forgot_password.dart';
+
+class SignInScreen extends StatefulWidget {
   final Function()? onTap;
 
-  const RegisterScreen({super.key, required this.onTap});
+  const SignInScreen({super.key, required this.onTap});
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<SignInScreen> createState() => _SignInScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _SignInScreenState extends State<SignInScreen> {
   //test editing controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final confirmPasswordController = TextEditingController();
 
   //sign user in method
-  void signUserUp() async {
+  void signUserIn() async {
     //show loading circle
     showDialog(
       context: context,
@@ -32,19 +34,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
       },
     );
 
-    //try creating a new user
+    //try sign in
     try {
-      //check if the password is the same as the confirmation
-      if(passwordController.text == confirmPasswordController.text) {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: emailController.text,
-          password: passwordController.text,
-        );
-      } else {
-        //show error message, passwords dont match
-        wrongPasswordMessage();
-      }
-
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
       //pop loading circle
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
@@ -55,6 +50,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         //show error to user
         wrongEmailMessage();
       }
+
       //WRONG PASSWORD
       else if (e.code == 'wrong-password') {
         wrongPasswordMessage();
@@ -87,7 +83,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           backgroundColor: Colors.green,
           title: Center(
             child: Text(
-              'Senha incorreta. Tente novamente"',
+              'Senha incorreta. Tente novamente ou acesse "esqueceu sua senha"',
               style: TextStyle(color: Colors.white),
             ),
           ),
@@ -129,19 +125,40 @@ class _RegisterScreenState extends State<RegisterScreen> {
               hintText: 'Senha',
               obscureText: true,
             ),
-
-            const SizedBox(height: 20),
-
-            CustomTextField(
-              controller: confirmPasswordController,
-              hintText: 'Confirme a senha',
-              obscureText: true,
-            ),
             const SizedBox(height: 10),
 
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return const ForgotPasswordScreen();
+                          },
+                        ),
+                      );
+                    },
+                    child: const Text(
+                      'Esqueceu a senha?',
+                      style: TextStyle(
+                          color: Colors.blueAccent,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 5),
+
             ButtonNext(
-              text: 'CADASTRAR',
-              onTap: signUserUp,
+              text: 'ENTRAR',
+              onTap: signUserIn,
             ),
 
             const SizedBox(height: 5),
@@ -171,47 +188,50 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 4,
-                ),
-                decoration: BoxDecoration(
-                  border: Border.all(color: CustomColors.darkestBlue),
-                  borderRadius: BorderRadius.circular(16),
-                  color: Colors.white30,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset("assets/images/ic_google.png", height: 40),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8),
-                      child: Text(
-                        'Entrar com Gmail',
-                        style: TextStyle(
-                          fontSize: 20,
+              child: GestureDetector(
+                onTap: () => AuthService().signInWithGoogle(),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 4,
+                  ),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: CustomColors.darkestBlue),
+                    borderRadius: BorderRadius.circular(16),
+                    color: Colors.white30,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset("assets/images/ic_google.png", height: 40),
+                        const Text(
+                          'Entrar com Gmail',
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
             ),
 
             const SizedBox(height: 20),
 
-            Row(
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  'Já tem um cadastro?',
+                  'Para se cadastrar:',
                   style: TextStyle(fontSize: 18),
                 ),
-                SizedBox(width: 4),
+                const SizedBox(width: 4),
                 GestureDetector(
                   onTap: widget.onTap,
                   child: const Text(
-                    'Entre aqui.',
+                    'Clique aqui',
                     style: TextStyle(
                         color: Colors.blue,
                         fontSize: 18,
